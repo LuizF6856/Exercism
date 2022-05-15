@@ -1,21 +1,16 @@
 defmodule BirdCount do
-  def today(list) do
-    # Please implement the today/1 function
-  end
+  def today([]), do: nil
+  def today([h |_list]), do: h
 
-  def increment_day_count(list) do
-    # Please implement the increment_day_count/1 function
-  end
+  def increment_day_count([]), do: [1]
+  def increment_day_count([h | list]), do:  [h + 1 | list]
 
-  def has_day_without_birds?(list) do
-    # Please implement the has_day_without_birds?/1 function
-  end
+  def has_day_without_birds?(list), do: if 0 in list, do: true, else: false
 
-  def total(list) do
-    # Please implement the total/1 function
-  end
+  def total([]), do: 0
+  def total([h | list]), do: h + total(list)
 
-  def busy_days(list) do
-    # Please implement the busy_days/1 function
-  end
+  def busy_days([]), do: 0
+  def busy_days([h | list]) when h >= 5, do: 1 + busy_days(list)
+  def busy_days([h | list]) when h < 5, do: busy_days(list)
 end
